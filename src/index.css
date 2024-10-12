@@ -104,3 +104,78 @@ ul.grid {
   display: inline-block;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+
+/* form  */
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+  gap: 20px; /* Add spacing between columns */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #1c2b78;
+  outline: none;
+  box-shadow: 0 0 5px rgba(28, 43, 120, 0.3);
+}
+
+.submit-button {
+  padding: 8px 16px;
+  background-color: #1c2b78;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px; /* Fully rounded edges */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  grid-column: 3; /* Place the button in the third column */
+  text-transform: uppercase;
+}
+
+.submit-button:hover {
+  background-color: #14205c;
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+
+.section-form {
+  padding: 1.6rem;
+background-color: #212f3d;
+border-radius: 0.6rem;
+-webkit-border-radius: 0.6rem;
+-moz-border-radius: 0.6rem;
+-ms-border-radius: 0.6rem;
+-o-border-radius: 0.6rem;
+margin: 3.2rem auto;}
+
+
