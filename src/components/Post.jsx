@@ -4,6 +4,7 @@ import "../App.css";
 import { Form } from "./Form";
 export const Posts = () => {
   const [data, setData] = useState([]);
+  const[updateDataApi,setUpdateDataApi] =useState({});
 
   const getPostData = async () => {
     const res = await getPost();
@@ -33,10 +34,14 @@ export const Posts = () => {
       }
     };
 
+    const handleUpdatePost=(curEle)=>{
+      setUpdateDataApi(curEle);
+    };
+
   return (
     <>
     <section className="section-form">
-      <Form data={data} setData={setData}/>
+      <Form data={data} setData={setData} updateDataApi={updateDataApi} setUpdateDataApi={setUpdateDataApi}/>
     </section>
     <section className="section-post">
       <ul className="grid 3-columns">
@@ -48,7 +53,7 @@ export const Posts = () => {
               <h2 className="post-title">Title: {title}</h2>
               <p className="post-body">Body: {body}</p>
               <div className="btn-container">
-                <button className="btn-edit">Edit</button>
+                <button className="btn-edit"  onClick={()=>handleUpdatePost(curEle)}>Edit</button>
                 <button className="btn-delete" onClick={()=>handleDeletePost(id)}>Delete</button>
               </div>
             </li>

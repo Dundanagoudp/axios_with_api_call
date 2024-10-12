@@ -22,3 +22,7 @@ export const deletePost=(id)=>{
 export const postData=(post)=>{
       return api.post("/posts",post);
 };
+
+export const postUpdate=()=>{
+      return api.patch();
+};

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postData } from "../api/PostApi";
 
-export const Form=({data,setData})=>{
+export const Form=({data,setData ,updateDataApi,setUpdateDataApi})=>{
 
       const[addData,setAddData] =useState({
             title:"",
@@ -28,6 +28,14 @@ export const Form=({data,setData})=>{
             setAddData({title:"",body:""})
          }
         };
+
+        useEffect(()=>{
+          updateDataApi && setAddData({
+            title: updateDataApi.title || "",
+            body: updateDataApi.body || "",
+
+          });
+        },[updateDataApi]);
 
       //   handleformsubmit
 
