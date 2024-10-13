@@ -23,6 +23,6 @@ export const postData=(post)=>{
       return api.post("/posts",post);
 };
 
-export const postUpdate=()=>{
-      return api.patch();
+export const updateData=(id,post)=>{
+      return api.put(`/posts/${id}`,post);
 };

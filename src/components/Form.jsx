@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { postData } from "../api/PostApi";
+import { postData, updateData } from "../api/PostApi";
 
 export const Form=({data,setData ,updateDataApi,setUpdateDataApi})=>{
 
@@ -7,6 +7,8 @@ export const Form=({data,setData ,updateDataApi,setUpdateDataApi})=>{
             title:"",
             body:"",
       });
+
+      let isEmpty = Object.keys(updateDataApi).length ===0;
 
       const handleInputChange=(e)=>{
             const name =e.target.name;
@@ -37,11 +39,33 @@ export const Form=({data,setData ,updateDataApi,setUpdateDataApi})=>{
           });
         },[updateDataApi]);
 
+        // update post
+
+        const updatePostData=async()=>{
+          try {
+            const res = await updateData(updateDataApi.id, addData);
+       console.log(res);
+       setData((prev)=>{
+        return prev.map((curEle)=>{
+          return curEle,id === res.id ? res.data :curEle;
+        })
+       });
+
+          } catch (error) {
+            console.log(error);
+          }
+        };
+
       //   handleformsubmit
 
       const handleFormSubmit=(e)=>{
             e.preventDefault();
+          const action = e.nativeEvent.submitter.value;
+          if(action === "Add") {
             addPostData();
+          } else if(action === "Edit"){
+            updatePostData();
+          }
       };
       return (
             <form className="form-container" onSubmit={handleFormSubmit}>
@@ -71,7 +95,7 @@ export const Form=({data,setData ,updateDataApi,setUpdateDataApi})=>{
                 onChange={handleInputChange}
               />
             </div>
-            <button type="submit" className="submit-button">Add</button>
+            <button type="submit" className="submit-button" value={isEmpty ? "Add" : "Edit"}>{isEmpty ? "Add" : "Edit"}</button>
           </form>
                           );
 };
