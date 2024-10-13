@@ -27,7 +27,9 @@ export const Form=({data,setData ,updateDataApi,setUpdateDataApi})=>{
          console.log("res",res);
          if((res.status === 201)){
             setData([...data,res.status]);
-            setAddData({title:"",body:""})
+            setAddData({title:"",body:""});
+            setUpdateDataApi({});
+
          }
         };
 
@@ -45,11 +47,13 @@ export const Form=({data,setData ,updateDataApi,setUpdateDataApi})=>{
           try {
             const res = await updateData(updateDataApi.id, addData);
        console.log(res);
+       if(res.status === 200){
        setData((prev)=>{
         return prev.map((curEle)=>{
-          return curEle,id === res.id ? res.data :curEle;
+          return curEle.id === updateDataApi.id ? res.data :curEle;
         })
        });
+      }
 
           } catch (error) {
             console.log(error);
